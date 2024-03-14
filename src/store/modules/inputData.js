@@ -2,14 +2,16 @@
 export default {
     namespaced:true,
     state:{
-        gender:[
-            {id: 0, title: "Мужской", slug:'муж.'},
-            {id: 1, title: "Женский",  slug:'жен.'}
+        genders:[
+            {id: 0, title: "Без разницы", slug:'Без разницы'},
+            {id: 1, title: "Мужской", slug:'муж.'},
+            {id: 2, title: "Женский",  slug:'жен.'}
         ],
         citizenship:[
-            {id: 0,icon:'', title: "Российская Федерация", slug:'РФ'},
-            {id: 1,icon:'', title: "Таджикистан", slug:'ТД'},
-            {id: 2,icon:'', title: "Узбекистан", slug:'УБ'},
+            {id: 0,icon:'', title: "Все страны", slug:''},
+            {id: 1,icon:'', title: "Российская Федерация", slug:'РФ'},
+            {id: 2,icon:'', title: "Таджикистан", slug:'ТД'},
+            {id: 3,icon:'', title: "Узбекистан", slug:'УБ'},
         ],
         typesContract:[
                 {id:0,title:'', slug:'ТД'},
@@ -24,10 +26,19 @@ export default {
             {id:3, color:"#00B6ED", title:"Есть замечания", slug:''},
             {id:4, color:"#00AE5B", title:"Выполнено", slug:''},
         ],
+        positions:[
+            {id:0, title:'Все должности'},
+            {id:1, title:'Промышленный альпинист'},
+            {id:2, title:'Токарь'},
+            {id:3, title:'Пекарь'},
+        ]
     },
     getters:{
         getTags(state){return state.tags},
         getTypesContract(state){return state.typesContract},
+        getGenders(state){return state.genders},
+        getCountry(state){return state.citizenship},
+        getPositions(state){return state.positions}
     },
 
 }

@@ -1,11 +1,14 @@
-
-
 <script setup>
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 
 const store = useStore();
 const typesContract = computed(() => store.getters['inputData/getTypesContract']);
+const genders = computed(() => store.getters['inputData/getGenders']);
+const country = computed(() => store.getters['inputData/getCountry']);
+const positions = computed(() => store.getters['inputData/getPositions']);
+
+
 </script>
 
 <template>
@@ -13,11 +16,13 @@ const typesContract = computed(() => store.getters['inputData/getTypesContract']
       <v-container class="padding-20 border-bottom">
           <v-btn
               class="text-none"
-              prepend-icon=""
               width="100%"
               color="blue"
               size="x-large"
               text="Добавить сотрудника">
+            <template #prepend>
+              <img src="@/assets/man.svg" alt="man" width="18px">
+            </template>
           </v-btn>
       </v-container>
 
@@ -32,10 +37,12 @@ const typesContract = computed(() => store.getters['inputData/getTypesContract']
             <v-col>
               <p>Гражданство</p>
               <v-select
+                  hide-details
                   id="select1"
-                  label="Select"
                   density="compact"
-                  :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+                  :items="country"
+                  item-value="id"
+                  item-name="title"
                   variant="solo-filled"
               ></v-select>
             </v-col>
@@ -43,10 +50,12 @@ const typesContract = computed(() => store.getters['inputData/getTypesContract']
             <v-col>
               <p>Пол</p>
               <v-select
-                  id="select1"
-                  label="Select"
+                  hide-details
+                  id="select2"
                   density="compact"
-                  :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+                  :items="genders"
+                  item-value="id"
+                  item-name="slug"
                   variant="solo-filled"
               ></v-select>
             </v-col>
@@ -56,10 +65,12 @@ const typesContract = computed(() => store.getters['inputData/getTypesContract']
             <v-col>
               <p>Должность</p>
               <v-select
+                  hide-details
                   id="select1"
-                  label="Select"
                   density="compact"
-                  :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+                  :items="positions"
+                  item-value="id"
+                  item-name="name"
                   variant="solo-filled"
               ></v-select>
             </v-col>
@@ -88,6 +99,8 @@ const typesContract = computed(() => store.getters['inputData/getTypesContract']
 </template>
 
 <style scoped>
-
+.drawer{
+  min-height: auto;
+}
 
 </style>
