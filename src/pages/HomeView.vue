@@ -21,8 +21,8 @@ import MainContent from "@/components/MainContent.vue";
 
 <style scoped>
   .home{
-    padding:20px 20px;
+    padding:13px 5px;
     background-color: #F7F8F9;
-    min-height:100vh;
+    min-height:90vh;
   }
 </style>
