@@ -1,7 +1,6 @@
 <script setup>
 import DrawerRight from "@/components/DrawerRight.vue";
 import MainContent from "@/components/MainContent.vue";
-
 </script>
 
 <template>

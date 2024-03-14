@@ -1,11 +1,10 @@
+
 <script setup>
-const filterButtons = [
-  {id:0, color:"#B0BCC7", label:"Весь список"},
-  {id:1, color:"#E2BD06", label:"Проблемные"},
-  {id:2, color:"#E52E2E", label:"Критические"},
-  {id:3, color:"#00B6ED", label:"Есть замечания"},
-  {id:4, color:"#00AE5B", label:"Выполнено"},
-]
+import { useStore } from 'vuex';
+import { computed } from 'vue';
+
+const store = useStore();
+const tags = computed(() => store.getters['inputData/getTags']);
 </script>
 
 <template>
@@ -30,16 +29,16 @@ const filterButtons = [
         </v-row>
         <v-row justify="start">
             <v-col>
-              <div class="button-group flex">
+              <div class="button-group flex" v-if="tags">
                 <v-btn
-                    class="text-none" :color="filterButtons[0].color"
+                    class="text-none" :color="tags[0].color"
                     rounded="xl">
-                  <span class="text-white">{{ filterButtons[0].label }}</span>
+                  <span class="text-white">{{ tags[0].title }}</span>
                 </v-btn>
-                <div v-for="btn in filterButtons.slice(1)" :key="btn.id">
+                <div v-for="btn in tags.slice(1)" :key="btn.id">
                   <v-btn
                       class="text-none" :color="btn.color" rounded="xl" variant="tonal">
-                    {{ btn.label }}
+                    {{ btn.title }}
                   </v-btn>
                 </div>
               </div>

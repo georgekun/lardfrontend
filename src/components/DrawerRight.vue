@@ -1,5 +1,11 @@
-<script setup>
 
+
+<script setup>
+import { useStore } from 'vuex';
+import { computed } from 'vue';
+
+const store = useStore();
+const typesContract = computed(() => store.getters['inputData/getTypesContract']);
 </script>
 
 <template>
@@ -59,19 +65,17 @@
             </v-col>
           </v-row>
 
-          <v-row class="border-bottom">
+          <v-row class="border-bottom" v-if="typesContract">
             <v-col>
               <p>Тип договора</p>
-
               <v-checkbox
-                  label="John"
-                  value="John"
+                  v-for = "tp in typesContract"
+                  :key = "tp.id"
+                  hide-details
+                  :label="tp.slug"
+                  :value="tp.id"
+                  density="compact"
               ></v-checkbox>
-              <v-checkbox
-                  label="Jacob"
-                  value="Jacob"
-              ></v-checkbox>
-
             </v-col>
           </v-row>
 
