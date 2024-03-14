@@ -1,30 +1,48 @@
 <script setup>
+import { ref,onMounted, defineProps } from 'vue';
+import { useStore } from 'vuex';
+
+const props = defineProps({
+  id: {
+    type: Number,
+    required: true
+  }
+});
+
+const store = useStore();
+const user = ref(null);
+
+onMounted(async () => {
+  user.value = await store.dispatch('employee/findEmployeeById', props.id);
+});
 
 </script>
 
 <template>
-  <v-container class="user-card padding-20">
+  <v-container class="user-card padding-20" v-if="user">
     <v-row>
       <v-col class="user_title">
-          <span class="name">Иванов Иван Иванович</span>
-          <span class="inn">ИНН 1234567890</span>
-          <span class="contract">ТД</span>
-          <span class="specialization">промышленный альпинист</span>
+          <span class="name">{{ user.full_name }}</span>
+          <span class="inn">ИНН {{user.inn}}</span>
+          <span class="contract">{{user.type_contract.slug}}</span>
+          <span class="specialization">{{user.position.title}}</span>
       </v-col>
     </v-row>
     <v-row>
       <v-col class="user_info">
-        <span><img src="" alt="icon"> TU 1232131</span>
-        <span>г. Санкт-Петербург</span>
-        <span>Дата рождения: 23.06.2001</span>
-        <span>Возраст: 21 год</span>
-        <span>Пол: мужской</span>
+        <span><img :src="user.country.icon" alt="icon"> {{ user.country.slug }} 1232131</span>
+        <span>г. {{user.address}}</span>
+        <span>Дата рождения: {{user.date_birth}}</span>
+        <span>Возраст: {{user.age}}</span>
+        <span>Пол: {{ user.gender.title }}</span>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col>
-          <span class="status">Истекают документы</span>
+          <span class="status"
+                :style="{'background-color':user.status.tag.color}"
+       >{{user.status.description}}</span>
       </v-col>
     </v-row>
   </v-container>

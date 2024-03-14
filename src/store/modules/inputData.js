@@ -9,9 +9,9 @@ export default {
         ],
         citizenship:[
             {id: 0,icon:'', title: "Все страны", slug:''},
-            {id: 1,icon:'@/assets/county_img/ru.png', title: "Российская Федерация", slug:'РФ'},
-            {id: 2,icon:'@/assets/county_img/tj.png', title: "Таджикистан", slug:'ТД'},
-            {id: 3,icon:'@/assets/county_img/tj.png', title: "Узбекистан", slug:'УБ'},
+            {id: 1,icon:'', title: "Российская Федерация", slug:'РФ'},
+            {id: 2,icon:'', title: "Таджикистан", slug:'ТД'},
+            {id: 3,icon:'', title: "Узбекистан", slug:'УБ'},
         ],
         typesContract:[
                 {id:0,title:'', slug:'ТД'},

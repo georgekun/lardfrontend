@@ -48,7 +48,7 @@ const isLoading=ref(false)
             </v-col>
         </v-row>
 
-        <employee-card v-for="i in 3" :key="i"></employee-card>
+        <employee-card :id="0"></employee-card>
 
         <v-row justify="center" class="mt-5 mb-3">
           <v-col cols="3" >
