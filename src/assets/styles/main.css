@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.border-bottom{
+    border-bottom:2px solid #F7F8F9;
+}
+.padding-20{
+    padding:20px;
+}
+.drawer{
+    border-radius:10px;
+    background-color: white;
+    min-height: 100vh;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    grid-column-gap:12px
+}
